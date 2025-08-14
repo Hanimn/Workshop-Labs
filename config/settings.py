@@ -6,7 +6,11 @@ from pathlib import Path
 from typing import Optional, Dict, Any
 from dotenv import load_dotenv
 import yaml
-from pydantic import BaseSettings, Field
+try:
+    from pydantic_settings import BaseSettings
+except ImportError:
+    from pydantic import BaseSettings
+from pydantic import Field
 
 
 # Load environment variables from .env file
@@ -61,6 +65,30 @@ class DataSourceConfig(BaseSettings):
         env_prefix = "DATA_"
 
 
+class MultiLanguageConfig(BaseSettings):
+    """Multi-language processing configuration"""
+    # Language detection settings
+    default_language: str = Field(default="en")
+    supported_languages: list = Field(default=["en", "fr", "de", "es", "it", "pt", "ru", "zh", "ja", "ar"])
+    min_confidence_threshold: float = Field(default=0.8)
+    
+    # Translation settings
+    translation_service: str = Field(default="basic_translate")  # basic_translate, deep_translator
+    translate_to_english: bool = Field(default=True)
+    preserve_original: bool = Field(default=True)
+    
+    # Query processing
+    auto_detect_query_language: bool = Field(default=True)
+    translate_response: bool = Field(default=True)
+    
+    # Cache settings
+    enable_translation_cache: bool = Field(default=True)
+    cache_expiry_hours: int = Field(default=168)  # 1 week
+    
+    class Config:
+        env_prefix = "LANG_"
+
+
 class AppConfig(BaseSettings):
     """Main application configuration"""
     project_root: Path = Field(default=Path(__file__).parent.parent)
@@ -73,6 +101,7 @@ class AppConfig(BaseSettings):
     llm: LLMConfig = Field(default_factory=LLMConfig)
     rag: RAGConfig = Field(default_factory=RAGConfig)
     data_sources: DataSourceConfig = Field(default_factory=DataSourceConfig)
+    multi_language: MultiLanguageConfig = Field(default_factory=MultiLanguageConfig)
     
     class Config:
         env_prefix = "APP_"
