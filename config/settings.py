@@ -25,10 +25,14 @@ class DatabaseConfig(BaseSettings):
 
 class LLMConfig(BaseSettings):
     """Large Language Model configuration"""
-    anthropic_api_key: Optional[str] = Field(default=None)
-    model_name: str = Field(default="claude-3-sonnet-20240229")
+    # Ollama configuration
+    ollama_base_url: str = Field(default="http://localhost:11434")
+    model_name: str = Field(default="gpt-oss:120b")
     max_tokens: int = Field(default=4096)
     temperature: float = Field(default=0.1)
+    
+    # Legacy Anthropic support
+    anthropic_api_key: Optional[str] = Field(default=None)
     
     class Config:
         env_prefix = "LLM_"
