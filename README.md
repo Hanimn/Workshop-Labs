@@ -52,8 +52,8 @@ This hands-on lab demonstrates how RAG technology can enhance cybersecurity oper
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
-   cd lab1
+   git clone https://github.com/Hanimn/Workshop-Labs.git
+   cd Workshop-Labs
    ```
 
 2. **Set up virtual environment:**
@@ -205,6 +205,7 @@ The system tracks performance using:
 
 ## 📈 Roadmap
 
+- [x] **Phase 1**: RAG CTI Pipeline foundation with Ollama integration ✅
 - [ ] **Phase 2**: Multi-language CTI support
 - [ ] **Phase 3**: Graph-based threat analysis
 - [ ] **Phase 4**: Real-time feed integration
@@ -228,6 +229,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - [MITRE ATT&CK](https://attack.mitre.org/) for the threat framework
 - [STIX/TAXII](https://oasis-open.github.io/cti-documentation/) for CTI standards
 - [Anthropic](https://www.anthropic.com/) for Claude API
+- [Ollama](https://ollama.com/) for local LLM deployment
+- [GPT-OSS](https://ollama.com/library/gpt-oss) for open-source language model
 - [ChromaDB](https://www.trychroma.com/) for vector database
 - [LangChain](https://langchain.readthedocs.io/) for RAG framework
 
@@ -235,7 +238,5 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 For questions, issues, or contributions:
 
-- 📧 Email: [maintainer-email]
-- 🐛 Issues: [GitHub Issues](link-to-issues)
-- 📚 Documentation: [Project Wiki](link-to-wiki)
-- 💬 Discussions: [GitHub Discussions](link-to-discussions)
+- 📧 Email: momeninia.hani@investcyber.com
+- 🐛 Issues: [GitHub Issues](https://github.com/Hanimn/Workshop-Labs/issues)
